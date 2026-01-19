@@ -1,0 +1,188 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import CompanyValues from "../components/CompanyValues.jsx";
+---
+
+<MainLayout title="La Empresa - RIBEIRO SRL">
+    <!-- Cinematic Hero Section -->
+    <section
+        class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-black overflow-hidden"
+    >
+        <div class="absolute inset-0 z-0">
+            <img
+                src="/assets/images/nosotros/grupo.jpg"
+                alt="Equipo Ribeiro"
+                class="w-full h-full object-cover object-bottom opacity-60"
+            />
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"
+            >
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 backdrop-blur-md animate-blur-in"
+                >
+                    <span class="text-sm font-bold uppercase tracking-wider"
+                        >La Empresa</span
+                    >
+                </div>
+                <h1
+                    class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight animate-blur-in delay-200"
+                >
+                    Nosotros
+                </h1>
+                <p
+                    class="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed animate-blur-in delay-400"
+                >
+                    Conocé nuestra visión, misión, valores e historia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <!-- Historia Section -->
+            <div class="mb-24 md:mb-32 relative">
+                <!-- Decorative Dots -->
+                <div
+                    class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:grid grid-cols-4 gap-4 opacity-50"
+                >
+                    {
+                        [...Array(12)].map((_, i) => (
+                            <div class="w-2 h-2 rounded-full bg-primary" />
+                        ))
+                    }
+                </div>
+
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-16"
+                >
+                    <div class="relative scroll-animate opacity-0">
+                        <div class="flex items-center gap-4 mb-4">
+                            <h3
+                                class="text-sm font-bold text-gray-500 tracking-[0.2em] uppercase"
+                            >
+                                Nuestra Historia
+                            </h3>
+                            <div class="h-[2px] w-24 bg-primary"></div>
+                        </div>
+                        <h2
+                            class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight"
+                        >
+                            Protagonistas del <br />
+                            <span class="text-black">desarrollo del país</span>
+                        </h2>
+                    </div>
+
+                    <div
+                        class="space-y-6 text-gray-600 text-lg leading-relaxed scroll-animate opacity-0"
+                    >
+                        <p>
+                            RIBEIRO nace en el año 1972 como consecuencia del
+                            creciente desarrollo del alto valle del Rio
+                            Colorado.
+                        </p>
+                        <p>
+                            Inicialmente, la construcción de defensas costeras,
+                            en el camino de acceso y explanada para pozos
+                            petroleros fueron la actividad principal de la
+                            Empresa.
+                        </p>
+                        <p>
+                            Desde entonces La Empresa, ha generado una
+                            organización y equipo humano confiable, capacitado y
+                            flexible acorde a las actuales demandas del mercado.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="relative w-full h-[300px] lg:h-[500px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group scroll-animate opacity-0"
+                >
+                    <img
+                        src="/assets/images/nosotros/grupo.jpg"
+                        alt="Historia Ribeiro"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Mision -->
+                <div
+                    class="p-6 md:p-10 bg-[#F9F9F9] rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 hover:border-primary/50 transition-all group scroll-animate opacity-0"
+                >
+                    <div
+                        class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-target"
+                            ><circle cx="12" cy="12" r="10"></circle><circle
+                                cx="12"
+                                cy="12"
+                                r="6"></circle><circle cx="12" cy="12" r="2"
+                            ></circle></svg
+                        >
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Misión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Desarrollar actividades en el ámbito del mercado Oil &
+                        Gas y de la construcción, generando continuamente
+                        políticas de calidad, seguridad y medio ambiente, que
+                        permitan realizar nuestras tareas de manera segura,
+                        sostenible y sustentables.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div
+                    class="p-6 md:p-10 bg-[#F9F9F9] rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 hover:border-primary/50 transition-all group scroll-animate opacity-0"
+                >
+                    <div
+                        class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-eye"
+                            ><path
+                                d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                            ></path><circle cx="12" cy="12" r="3"></circle></svg
+                        >
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Visión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ser reconocidos en el mercado como una Empresa líder del
+                        sector, que piensa, desarrolla, ejecuta trabajos de
+                        calidad y con absoluto compromiso con sus clientes. Todo
+                        esto en tiempo y forma y con la responsabilidad y
+                        profesionalismo necesario.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <CompanyValues client:visible />
+</MainLayout>

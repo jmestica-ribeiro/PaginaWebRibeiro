@@ -1,0 +1,157 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ProjectGallery from "../components/ProjectGallery.jsx";
+---
+
+<MainLayout title="Servicios Petroleros | RIBEIRO SRL">
+	<!-- Cinematic Hero Section -->
+	<section
+		class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-black overflow-hidden"
+	>
+		<div class="absolute inset-0 z-0">
+			<img
+				src="/assets/images/servicios-petroleros/banner.png"
+				alt="Banner Servicios Petroleros"
+				class="w-full h-full object-cover object-center opacity-60"
+			/>
+			<div
+				class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"
+			>
+			</div>
+		</div>
+
+		<div class="container mx-auto px-6 relative z-10">
+			<div class="max-w-4xl">
+				<div
+					class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 backdrop-blur-md animate-blur-in"
+				>
+					<span class="text-sm font-bold uppercase tracking-wider"
+						>Unidades de Negocio</span
+					>
+				</div>
+				<h1
+					class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight animate-blur-in delay-200"
+				>
+					Servicios
+				</h1>
+				<p
+					class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed animate-blur-in delay-400"
+				>
+					En esta sección compartimos algunas de las obras más
+					destacadas que hemos ejecutado en los sectores de
+					infraestructura, energía y servicios. A través de estos
+					trabajos reflejamos nuestra experiencia, capacidad técnica y
+					responsabilidad con el entorno y nuestros clientes.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content Placeholder (Optional, can be expanded later) -->
+	<section class="py-16 md:py-24 bg-white">
+		<div class="container mx-auto px-6">
+			{/* Navigation Chips & Title */}
+			<div class="mb-16 text-center">
+				<h2 class="text-3xl font-bold mb-8 text-gray-900">
+					Nuestros Servicios:
+				</h2>
+
+				<div class="flex flex-wrap justify-center gap-4">
+					<a
+						href="#construccion"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Construcción de Locaciones
+					</a>
+					<a
+						href="#bodegas"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Bodegas
+					</a>
+					<a
+						href="#movimiento"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Movimiento de Suelos
+					</a>
+					<a
+						href="#piping"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Obra Civil & Piping
+					</a>
+				</div>
+			</div>
+
+			<div class="max-w-5xl mx-auto scroll-animate opacity-0">
+				<div
+					class="relative w-full aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 group"
+				>
+					<iframe
+						class="absolute top-0 left-0 w-full h-full"
+						src="https://www.youtube.com/embed/C70nVcUC-08?rel=0&modestbranding=1&autoplay=1&mute=1"
+						title="Video Institucional - Servicios"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen
+						loading="lazy"></iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ProjectGallery
+		client:load
+		id="construccion"
+		title="Construcción de Locaciones"
+		subtitle="PCR – PLUSPETROL – TECPETROL – YPF"
+		images={[
+			"/assets/images/servicios-petroleros/construccion-locaciones/1.png",
+			"/assets/images/servicios-petroleros/construccion-locaciones/2.png",
+			"/assets/images/servicios-petroleros/construccion-locaciones/3.png",
+			"/assets/images/servicios-petroleros/construccion-locaciones/4.png",
+			"/assets/images/servicios-petroleros/construccion-locaciones/5.png",
+			"/assets/images/servicios-petroleros/construccion-locaciones/6.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="bodegas"
+		title="Bodegas para locación"
+		subtitle="TECPETROL - PCR"
+		images={[
+			"/assets/images/servicios-petroleros/bodegas/1.png",
+			"/assets/images/servicios-petroleros/bodegas/2.png",
+			"/assets/images/servicios-petroleros/bodegas/3.png",
+			"/assets/images/servicios-petroleros/bodegas/4.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="movimiento"
+		title="Movimiento de Suelos"
+		subtitle="TECPETROL - PCR"
+		images={[
+			"/assets/images/servicios-petroleros/mov-suelos/1.jpg",
+			"/assets/images/servicios-petroleros/mov-suelos/2.jpg",
+			"/assets/images/servicios-petroleros/mov-suelos/3.png",
+			"/assets/images/servicios-petroleros/mov-suelos/4.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="piping"
+		title="Obra Civil & Piping"
+		subtitle="PCR"
+		images={[
+			"/assets/images/servicios-petroleros/piping/1.png",
+			"/assets/images/servicios-petroleros/piping/2.png",
+			"/assets/images/servicios-petroleros/piping/3.png",
+			"/assets/images/servicios-petroleros/piping/4.png",
+			"/assets/images/servicios-petroleros/piping/5.png",
+		]}
+	/>
+</MainLayout>

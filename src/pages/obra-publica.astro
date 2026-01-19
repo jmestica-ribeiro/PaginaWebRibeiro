@@ -1,0 +1,150 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ProjectGallery from "../components/ProjectGallery.jsx";
+---
+
+<MainLayout title="Obra Pública | RIBEIRO SRL">
+	<!-- Cinematic Hero Section -->
+	<section
+		class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-black overflow-hidden"
+	>
+		<div class="absolute inset-0 z-0">
+			<img
+				src="/assets/images/servicios-petroleros/planta-de-asfalto.jpg"
+				alt="Banner Obra Pública"
+				class="w-full h-full object-cover object-center opacity-60"
+			/>
+			<div
+				class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"
+			>
+			</div>
+		</div>
+
+		<div class="container mx-auto px-6 relative z-10">
+			<div class="max-w-4xl">
+				<div
+					class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 backdrop-blur-md animate-blur-in"
+				>
+					<span class="text-sm font-bold uppercase tracking-wider"
+						>Unidades de Negocio</span
+					>
+				</div>
+				<h1
+					class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight animate-blur-in delay-200"
+				>
+					Obras
+				</h1>
+				<p
+					class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed animate-blur-in delay-400"
+				>
+					En esta sección compartimos algunas de las obras más
+					destacadas que hemos ejecutado en los sectores de
+					infraestructura, energía y servicios. A través de estos
+					trabajos reflejamos nuestra experiencia, capacidad técnica y
+					responsabilidad con el entorno y nuestros clientes.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content Placeholder (Optional, can be expanded later) -->
+	<section class="py-16 md:py-24 bg-white">
+		<div class="container mx-auto px-6">
+			{/* Title */}
+			<div class="mb-16 text-center">
+				<h2 class="text-3xl font-bold mb-8 text-gray-900">
+					Nuestros servicios
+				</h2>
+
+				<div class="flex flex-wrap justify-center gap-4">
+					<a
+						href="#infraestructura"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Infraestructura Vial e Hídrica
+					</a>
+					<a
+						href="#asfalto"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Pavimentación urbana y asfalto
+					</a>
+					<a
+						href="#defensas"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Defensas costeras - Márgenes de Río
+					</a>
+					<a
+						href="#canteras"
+						class="px-6 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all text-sm font-semibold uppercase tracking-wide"
+					>
+						Explotación de Canteras
+					</a>
+				</div>
+			</div>
+
+			<div class="max-w-5xl mx-auto scroll-animate opacity-0">
+				<div
+					class="relative w-full aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 group"
+				>
+					<iframe
+						class="absolute top-0 left-0 w-full h-full"
+						src="https://www.youtube.com/embed/SDy6Kpq_4Vw?rel=0&modestbranding=1&autoplay=1&mute=1"
+						title="Video Institucional - Obra Pública"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen
+						loading="lazy"></iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ProjectGallery
+		client:load
+		id="infraestructura"
+		title="Infraestructura Vial e Hídrica"
+		images={[
+			"/assets/images/obras-publicas/infraestructura_hidtica/1.png",
+			"/assets/images/obras-publicas/infraestructura_hidtica/2.png",
+			"/assets/images/obras-publicas/infraestructura_hidtica/3.png",
+			"/assets/images/obras-publicas/infraestructura_hidtica/4.png",
+			"/assets/images/obras-publicas/infraestructura_hidtica/5.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="asfalto"
+		title="Pavimentación urbana y asfalto"
+		images={[
+			"/assets/images/obras-publicas/asfalto/1.png",
+			"/assets/images/obras-publicas/asfalto/2.png",
+			"/assets/images/obras-publicas/asfalto/3.png",
+			"/assets/images/obras-publicas/asfalto/4.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="defensas"
+		title="Defensas costeras - Márgenes de Río"
+		images={[
+			"/assets/images/obras-publicas/margenes/1.png",
+			"/assets/images/obras-publicas/margenes/2.png",
+			"/assets/images/obras-publicas/margenes/3.png",
+		]}
+	/>
+
+	<ProjectGallery
+		client:load
+		id="canteras"
+		title="Explotación de Canteras"
+		images={[
+			"/assets/images/obras-publicas/canteras/1.png",
+			"/assets/images/obras-publicas/canteras/2.png",
+			"/assets/images/obras-publicas/canteras/3.png",
+			"/assets/images/obras-publicas/canteras/4.png",
+		]}
+	/>
+</MainLayout>
