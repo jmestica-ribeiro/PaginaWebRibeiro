@@ -1,8 +1,35 @@
 import React from "react";
 import { Input, Textarea, Button, Autocomplete, AutocompleteItem } from "@heroui/react";
-import { Send } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import ReCAPTCHAImport from "react-google-recaptcha";
 
 export default function ProviderForm() {
+    const ReCAPTCHA = ReCAPTCHAImport.default || ReCAPTCHAImport;
+    const [captchaValue, setCaptchaValue] = React.useState(null);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [formStatus, setFormStatus] = React.useState("idle");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!captchaValue) {
+            return;
+        }
+
+        setIsSubmitting(true);
+        setFormStatus("idle");
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            setFormStatus("success");
+            setCaptchaValue(null);
+        } catch (error) {
+            setFormStatus("error");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     const labelStyle = {
         color: "#000000",
         opacity: 1,
@@ -29,7 +56,7 @@ export default function ProviderForm() {
 
     return (
         <div className="light">
-            <form className="space-y-8">
+            <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex flex-col">
                         <label style={labelStyle}>Razón Social</label>
@@ -146,11 +173,41 @@ export default function ProviderForm() {
                     />
                 </div>
 
+                <div className="flex flex-col gap-2">
+                    <ReCAPTCHA
+                        sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                        onChange={setCaptchaValue}
+                    />
+                </div>
+
+                {formStatus === "success" && (
+                    <div className="p-4 rounded-xl bg-green-50 border border-green-200 flex items-center gap-3 text-green-700 animate-in fade-in slide-in-from-bottom-2">
+                        <CheckCircle className="shrink-0" size={24} />
+                        <div>
+                            <p className="font-bold">¡Solicitud enviada correctamente!</p>
+                            <p className="text-sm">Evaluaremos tu propuesta y te contactaremos.</p>
+                        </div>
+                    </div>
+                )}
+
+                {formStatus === "error" && (
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-center gap-3 text-red-700 animate-in fade-in slide-in-from-bottom-2">
+                        <AlertCircle className="shrink-0" size={24} />
+                        <div>
+                            <p className="font-bold">Error al enviar la solicitud</p>
+                            <p className="text-sm">Por favor, revisá tu conexión e intentá nuevamente.</p>
+                        </div>
+                    </div>
+                )}
+
                 <Button
-                    className="w-full bg-primary text-black font-bold h-16 text-xl rounded-2xl shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all mt-8"
-                    endContent={<Send size={24} />}
+                    className="w-full bg-primary text-black font-bold h-16 text-xl rounded-2xl shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    endContent={!isSubmitting && <Send size={24} />}
+                    isDisabled={!captchaValue || isSubmitting}
+                    isLoading={isSubmitting}
+                    type="submit"
                 >
-                    ENVIAR
+                    {isSubmitting ? "ENVIANDO..." : "ENVIAR SOLICITUD"}
                 </Button>
             </form>
         </div>

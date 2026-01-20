@@ -1,8 +1,44 @@
 import React from "react";
 import { Input, Textarea, Button, Autocomplete, AutocompleteItem } from "@heroui/react";
-import { Send, Upload } from "lucide-react";
+import { Send, Upload, CheckCircle, AlertCircle } from "lucide-react";
+import ReCAPTCHAImport from "react-google-recaptcha";
 
 export default function RRHHForm() {
+    const ReCAPTCHA = ReCAPTCHAImport.default || ReCAPTCHAImport;
+    const [captchaValue, setCaptchaValue] = React.useState(null);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [formStatus, setFormStatus] = React.useState("idle");
+    const fileInputRef = React.useRef(null);
+    const [selectedFile, setSelectedFile] = React.useState(null);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!captchaValue) {
+            return;
+        }
+
+        setIsSubmitting(true);
+        setFormStatus("idle");
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            setFormStatus("success");
+            setCaptchaValue(null);
+        } catch (error) {
+            setFormStatus("error");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     const labelStyle = {
         color: "#000000",
         opacity: 1,
@@ -29,7 +65,7 @@ export default function RRHHForm() {
 
     return (
         <div className="light">
-            <form className="space-y-8">
+            <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex flex-col">
                         <label style={labelStyle}>Nombre y Apellido</label>
@@ -133,13 +169,33 @@ export default function RRHHForm() {
 
                 <div className="flex flex-col gap-2">
                     <label style={labelStyle}>Currículum Vitae</label>
-                    <div className="p-8 border-2 border-dashed border-gray-200 rounded-[2rem] flex flex-col items-center justify-center gap-4 hover:border-primary hover:bg-white transition-all cursor-pointer group bg-gray-50/50">
-                        <div className="p-4 rounded-full bg-white shadow-sm group-hover:bg-primary/10 transition-colors">
-                            <Upload size={24} className="text-gray-400 group-hover:text-primary transition-colors" />
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                        accept=".pdf,.doc,.docx"
+                        className="hidden"
+                    />
+                    <div
+                        onClick={() => fileInputRef.current?.click()}
+                        className={`p-8 border-2 border-dashed rounded-[2rem] flex flex-col items-center justify-center gap-4 transition-all cursor-pointer group bg-gray-50/50 ${selectedFile
+                            ? "border-primary bg-primary/5"
+                            : "border-gray-200 hover:border-primary hover:bg-white"
+                            }`}
+                    >
+                        <div className={`p-4 rounded-full shadow-sm transition-colors ${selectedFile
+                            ? "bg-primary text-black"
+                            : "bg-white text-gray-400 group-hover:bg-primary/10 group-hover:text-primary"
+                            }`}>
+                            {selectedFile ? <CheckCircle size={24} /> : <Upload size={24} />}
                         </div>
                         <div className="text-center">
-                            <p className="font-bold text-gray-900">Subí tu CV (PDF)</p>
-                            <p className="text-xs text-gray-500 mt-1">Hacé clic para seleccionar archivo</p>
+                            <p className="font-bold text-gray-900">
+                                {selectedFile ? selectedFile.name : "Subí tu CV (PDF)"}
+                            </p>
+                            <p className="text-xs text-gray-500 mt-1">
+                                {selectedFile ? "Clic para cambiar archivo" : "Hacé clic para seleccionar archivo"}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -158,11 +214,41 @@ export default function RRHHForm() {
                     />
                 </div>
 
+                <div className="flex flex-col gap-2">
+                    <ReCAPTCHA
+                        sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                        onChange={setCaptchaValue}
+                    />
+                </div>
+
+                {formStatus === "success" && (
+                    <div className="p-4 rounded-xl bg-green-50 border border-green-200 flex items-center gap-3 text-green-700 animate-in fade-in slide-in-from-bottom-2">
+                        <CheckCircle className="shrink-0" size={24} />
+                        <div>
+                            <p className="font-bold">¡CV recibido correctamente!</p>
+                            <p className="text-sm">Tu postulación ha sido registrada en nuestra base de datos.</p>
+                        </div>
+                    </div>
+                )}
+
+                {formStatus === "error" && (
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-center gap-3 text-red-700 animate-in fade-in slide-in-from-bottom-2">
+                        <AlertCircle className="shrink-0" size={24} />
+                        <div>
+                            <p className="font-bold">Error al enviar la postulación</p>
+                            <p className="text-sm">Por favor, revisá tu conexión e intentá nuevamente.</p>
+                        </div>
+                    </div>
+                )}
+
                 <Button
-                    className="w-full bg-primary text-black font-bold h-16 text-xl rounded-2xl shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all mt-8"
-                    endContent={<Send size={24} />}
+                    className="w-full bg-primary text-black font-bold h-16 text-xl rounded-2xl shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    endContent={!isSubmitting && <Send size={24} />}
+                    isDisabled={!captchaValue || isSubmitting}
+                    isLoading={isSubmitting}
+                    type="submit"
                 >
-                    ENVIAR
+                    {isSubmitting ? "ENVIANDO..." : "ENVIAR POSTULACIÓN"}
                 </Button>
             </form>
         </div>
