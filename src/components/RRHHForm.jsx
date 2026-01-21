@@ -63,7 +63,7 @@ export default function RRHHForm() {
                 };
             }
 
-            const response = await fetch(import.meta.env.PUBLIC_POWER_AUTOMATE_WEBHOOK_RRHH, {
+            const response = await fetch("/api/rrhh", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
