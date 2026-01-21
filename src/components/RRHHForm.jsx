@@ -18,6 +18,15 @@ export default function RRHHForm() {
         }
     };
 
+    const [selectedArea, setSelectedArea] = React.useState(null);
+
+    const toBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -29,10 +38,52 @@ export default function RRHHForm() {
         setFormStatus("idle");
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            setFormStatus("success");
-            setCaptchaValue(null);
+            const formData = new FormData(e.target);
+            const data = {
+                nombre: formData.get("nombre"),
+                dni: formData.get("dni"),
+                email: formData.get("email"),
+                telefono: formData.get("telefono"),
+                puesto: formData.get("puesto"),
+                area: selectedArea,
+                mensaje: formData.get("mensaje"),
+                captcha: captchaValue,
+                cv: null
+            };
+
+            if (selectedFile) {
+                const base64File = await toBase64(selectedFile);
+                // Remove data URL prefix (e.g., "data:application/pdf;base64,") to get raw base64
+                const base64Content = base64File.split(',')[1];
+
+                data.cv = {
+                    name: selectedFile.name,
+                    type: selectedFile.type,
+                    contentBytes: base64Content
+                };
+            }
+
+            const response = await fetch(import.meta.env.PUBLIC_POWER_AUTOMATE_WEBHOOK_RRHH, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                setFormStatus("success");
+                setCaptchaValue(null);
+                setSelectedFile(null);
+                setSelectedArea(null);
+                e.target.reset(); // Limpiar inputs nativos
+            } else {
+                const errorText = await response.text();
+                console.error("Power Automate Webhook Error:", response.status, errorText);
+                throw new Error(`Error del servidor: ${response.status}`);
+            }
         } catch (error) {
+            console.error("Error enviando formulario:", error);
             setFormStatus("error");
         } finally {
             setIsSubmitting(false);
@@ -70,6 +121,8 @@ export default function RRHHForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Nombre y Apellido</label>
                         <Input
+                            aria-label="Nombre y Apellido"
+                            name="nombre"
                             placeholder="Tu nombre completo"
                             variant="flat"
                             radius="lg"
@@ -80,6 +133,8 @@ export default function RRHHForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>DNI</label>
                         <Input
+                            aria-label="DNI"
+                            name="dni"
                             placeholder="Sin puntos"
                             variant="flat"
                             radius="lg"
@@ -92,6 +147,8 @@ export default function RRHHForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Email</label>
                         <Input
+                            aria-label="Email"
+                            name="email"
                             placeholder="ejemplo@correo.com"
                             variant="flat"
                             type="email"
@@ -103,6 +160,8 @@ export default function RRHHForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Teléfono</label>
                         <Input
+                            aria-label="Teléfono"
+                            name="telefono"
                             placeholder="+54 ..."
                             variant="flat"
                             radius="lg"
@@ -115,10 +174,12 @@ export default function RRHHForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Área de interés</label>
                     <Autocomplete
+                        aria-label="Área de interés"
                         placeholder="Seleccioná un área"
                         variant="flat"
                         radius="lg"
                         isRequired
+                        onSelectionChange={setSelectedArea}
                         classNames={{
                             base: "w-full",
                             inputWrapper: [
@@ -167,6 +228,19 @@ export default function RRHHForm() {
                     </Autocomplete>
                 </div>
 
+                <div className="flex flex-col">
+                    <label style={labelStyle}>Puesto de interés</label>
+                    <Input
+                        aria-label="Puesto"
+                        name="puesto"
+                        placeholder="Ej: Chofer de Cargas Peligrosas / Administrativo Contable"
+                        variant="flat"
+                        radius="lg"
+                        classNames={inputClasses}
+                        isRequired
+                    />
+                </div>
+
                 <div className="flex flex-col gap-2">
                     <label style={labelStyle}>Currículum Vitae</label>
                     <input
@@ -203,6 +277,8 @@ export default function RRHHForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Mensaje / Comentarios</label>
                     <Textarea
+                        aria-label="Mensaje"
+                        name="mensaje"
                         placeholder="Contanos por qué te gustaría sumarte..."
                         variant="flat"
                         radius="lg"
