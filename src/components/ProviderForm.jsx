@@ -19,11 +19,35 @@ export default function ProviderForm() {
         setIsSubmitting(true);
         setFormStatus("idle");
 
+        // Collect form data
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        // Add additional metadata if needed (e.g. timestamp)
+        const payload = {
+            ...data,
+            timestamp: new Date().toISOString()
+        };
+
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            setFormStatus("success");
-            setCaptchaValue(null);
+            // Send data to our internal API endpoint (which securely calls Power Automate)
+            const response = await fetch("/api/compras", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                setFormStatus("success");
+                setCaptchaValue(null);
+                e.target.reset(); // Clear the form
+            } else {
+                throw new Error("Error submitting form");
+            }
         } catch (error) {
+            console.error(error);
             setFormStatus("error");
         } finally {
             setIsSubmitting(false);
@@ -61,6 +85,7 @@ export default function ProviderForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Razón Social</label>
                         <Input
+                            name="razonSocial"
                             placeholder="Ej: Constructora S.A."
                             variant="flat"
                             radius="lg"
@@ -71,6 +96,7 @@ export default function ProviderForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>CUIT</label>
                         <Input
+                            name="cuit"
                             placeholder="XX-XXXXXXXX-X"
                             variant="flat"
                             radius="lg"
@@ -84,6 +110,7 @@ export default function ProviderForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Email de Contacto</label>
                         <Input
+                            name="email"
                             placeholder="contacto@empresa.com"
                             variant="flat"
                             type="email"
@@ -95,6 +122,7 @@ export default function ProviderForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Teléfono</label>
                         <Input
+                            name="telefono"
                             placeholder="+54 299 ..."
                             variant="flat"
                             radius="lg"
@@ -107,6 +135,7 @@ export default function ProviderForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Rubro / Categoría</label>
                     <Autocomplete
+                        name="rubro"
                         placeholder="Seleccioná un rubro"
                         variant="flat"
                         radius="lg"
@@ -161,6 +190,7 @@ export default function ProviderForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Descripción de productos o servicios</label>
                     <Textarea
+                        name="descripcion"
                         placeholder="Breve descripción de su oferta comercial..."
                         variant="flat"
                         radius="lg"

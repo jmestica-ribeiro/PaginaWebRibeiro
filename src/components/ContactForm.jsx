@@ -19,13 +19,35 @@ export default function ContactForm() {
         setIsSubmitting(true);
         setFormStatus("idle");
 
-        // Simulación de envío
+        // Collect form data
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        // Add additional metadata
+        const payload = {
+            ...data,
+            timestamp: new Date().toISOString()
+        };
+
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            setFormStatus("success");
-            setCaptchaValue(null);
-            // Aquí se reiniciaría el formulario
+            // Send data to our internal API endpoint
+            const response = await fetch("/api/contacto", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                setFormStatus("success");
+                setCaptchaValue(null);
+                e.target.reset();
+            } else {
+                throw new Error("Error submitting form");
+            }
         } catch (error) {
+            console.error(error);
             setFormStatus("error");
         } finally {
             setIsSubmitting(false);
@@ -64,6 +86,7 @@ export default function ContactForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Nombre y Apellido</label>
                         <Input
+                            name="nombre"
                             placeholder="Tu nombre completo"
                             variant="flat"
                             radius="lg"
@@ -74,6 +97,7 @@ export default function ContactForm() {
                     <div className="flex flex-col">
                         <label style={labelStyle}>Email</label>
                         <Input
+                            name="email"
                             placeholder="ejemplo@correo.com"
                             variant="flat"
                             type="email"
@@ -87,6 +111,7 @@ export default function ContactForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Asunto</label>
                     <Autocomplete
+                        name="asunto"
                         placeholder="Seleccioná un motivo"
                         variant="flat"
                         radius="lg"
@@ -114,6 +139,7 @@ export default function ContactForm() {
                 <div className="flex flex-col">
                     <label style={labelStyle}>Mensaje</label>
                     <Textarea
+                        name="mensaje"
                         placeholder="Escribí tu mensaje aquí..."
                         variant="flat"
                         radius="lg"
