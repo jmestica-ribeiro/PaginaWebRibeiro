@@ -57,8 +57,8 @@ export default function SiteNavbar() {
             <Navbar
                 height="5rem"
                 maxWidth="xl"
-                className="bg-black/90 backdrop-blur-md border-b border-white/10"
-                isBordered
+                className="absolute w-full z-50 bg-transparent py-4"
+                isBlurred={false}
                 isMenuOpen={isMenuOpen}
                 onMenuOpenChange={setIsMenuOpen}
             >
@@ -118,7 +118,7 @@ export default function SiteNavbar() {
                         </NavbarItem>
                         <DropdownMenu
                             aria-label="Unidades de Negocio"
-                            className="w-[260px] bg-black/90 backdrop-blur-md border border-white/10"
+                            className="w-[260px] bg-black/95 border border-white/10"
                             onMouseEnter={handleMouseEnterUN}
                             onMouseLeave={handleMouseLeaveUN}
                             itemClasses={{
@@ -163,7 +163,7 @@ export default function SiteNavbar() {
                         </NavbarItem>
                         <DropdownMenu
                             aria-label="Trabajá con nosotros"
-                            className="w-[220px] bg-black/90 backdrop-blur-md border border-white/10"
+                            className="w-[220px] bg-black/95 border border-white/10"
                             onMouseEnter={handleMouseEnterTN}
                             onMouseLeave={handleMouseLeaveTN}
                             itemClasses={{
@@ -192,7 +192,7 @@ export default function SiteNavbar() {
                 </NavbarContent>
 
                 {/* Mobile Menu Content */}
-                <NavbarMenu className="bg-black/95 pt-8 backdrop-blur-xl">
+                <NavbarMenu className="bg-black/95 pt-8">
                     {menuItems.map((item, index) => (
                         <NavbarMenuItem key={`${item}-${index}`}>
                             <Link

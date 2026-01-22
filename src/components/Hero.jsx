@@ -1,13 +1,16 @@
 import React from "react";
 import { Button, Link } from "@heroui/react";
 import { HeroUIProvider } from "../providers/HeroUIProvider";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, ChevronDown, Linkedin, Instagram } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
+    const { scrollY } = useScroll();
+    const dockOpacity = useTransform(scrollY, [0, 200], [1, 0]);
+    const dockPointerEvents = useTransform(scrollY, (y) => (y > 200 ? "none" : "auto"));
     return (
         <HeroUIProvider>
-            <section className="relative w-full h-[calc(100vh-5.125rem)] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-surface">
+            <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-surface">
                 {/* Video Background */}
                 <motion.div
                     initial={{ opacity: 0, filter: "blur(10px)" }}
@@ -78,25 +81,63 @@ export default function Hero() {
                     </motion.div>
                 </div>
 
-                {/* Scroll Indicator */}
+                {/* Side Explore Indicator */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.5, duration: 1 }}
-                    className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-10"
+                    className="absolute left-12 md:left-32 bottom-12 z-20 hidden md:flex flex-col items-center gap-4"
                 >
-                    <a
-                        href="#features"
-                        className="flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors group"
-                    >
-                        <span className="text-xs uppercase tracking-[0.2em] font-medium">Conoce más</span>
+                    <a href="#features" className="group flex flex-col items-center gap-4">
+                        <span className="text-white text-xs uppercase tracking-[0.3em] font-medium [writing-mode:vertical-rl] rotate-180 transition-colors duration-300">
+                            Conoce más
+                        </span>
+                        <div className="h-12 w-[1px] bg-primary transition-colors duration-300" />
                         <motion.div
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            animate={{ y: [0, 5, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         >
-                            <ChevronDown size={28} className="drop-shadow-lg" />
+                            <ChevronDown size={20} className="text-white/60 group-hover:text-white transition-colors" />
                         </motion.div>
                     </a>
+                </motion.div>
+                {/* Floating Social Dock */}
+                <motion.div
+                    style={{ opacity: dockOpacity, pointerEvents: dockPointerEvents }}
+                    className="absolute bottom-12 right-8 z-20"
+                >
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.8, duration: 0.8 }}
+                        className="flex items-center gap-1 p-1 pr-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full shadow-lg"
+                    >
+                        <a
+                            href="https://www.linkedin.com/company/ribeiro-srl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin size={20} />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/ribeiro.srl/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
+                            aria-label="Instagram"
+                        >
+                            <Instagram size={20} />
+                        </a>
+
+
+
+                        {/* Settings/Extra Icon Placeholder (optional, using generic icon for style match or just sticking to socials) 
+                        User asked for IG and LinkedIn specifically. 
+                        Let's just keep the two requested icons for now but styled nicely.
+                    */}
+                    </motion.div>
                 </motion.div>
             </section>
         </HeroUIProvider>
