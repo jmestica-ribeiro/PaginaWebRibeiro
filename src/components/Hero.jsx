@@ -40,8 +40,8 @@ export default function Hero() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 md:mb-8 text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
                     >
-                        Movimientos de Suelo y <br />
-                        Obras Civiles
+                        Construimos, Operamos <br />
+                        Mantenemos
                     </motion.h1>
 
                     <motion.p
