@@ -72,7 +72,7 @@ export default function SiteNavbar() {
                     <Link href="/" className="flex items-center gap-2 text-inherit hover:opacity-80 transition-opacity h-full">
                         <img
                             src="/assets/images/ribeiro-logo.png"
-                            alt="RIBEIRO Logo"
+                            alt="RIBEIRO SRL - Servicios Petroleros y Construcción en Vaca Muerta, Neuquén y La Pampa"
                             className="h-10 md:h-14 w-auto py-1 object-contain"
                         />
                     </Link>

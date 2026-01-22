@@ -3,16 +3,16 @@ import { HeroUIProvider } from "../providers/HeroUIProvider";
 import { motion } from "framer-motion";
 
 const logos = [
-    { name: "Cliente 1", url: "/assets/images/inicio/clientes/cliente.png" },
-    { name: "Cliente 2", url: "/assets/images/inicio/clientes/cliente (2).png" },
-    { name: "Cliente 3", url: "/assets/images/inicio/clientes/cliente (3).png" },
-    { name: "Cliente 4", url: "/assets/images/inicio/clientes/cliente (4).png" },
-    { name: "Cliente 5", url: "/assets/images/inicio/clientes/cliente (5).png" },
-    { name: "Cliente 6", url: "/assets/images/inicio/clientes/cliente (6).png" },
-    { name: "Cliente 7", url: "/assets/images/inicio/clientes/cliente (7).png" },
-    { name: "Cliente 8", url: "/assets/images/inicio/clientes/cliente (8).jpg" },
-    { name: "Cliente 9", url: "/assets/images/inicio/clientes/cliente (9).png" },
-    { name: "Cliente 10", url: "/assets/images/inicio/clientes/cliente (10).png" },
+    { name: "Cliente Petrolera 1", url: "/assets/images/inicio/clientes/cliente.png" },
+    { name: "Cliente Construcción 2", url: "/assets/images/inicio/clientes/cliente (2).png" },
+    { name: "Cliente Oil & Gas 3", url: "/assets/images/inicio/clientes/cliente (3).png" },
+    { name: "Cliente Energía 4", url: "/assets/images/inicio/clientes/cliente (4).png" },
+    { name: "Cliente Minería 5", url: "/assets/images/inicio/clientes/cliente (5).png" },
+    { name: "Cliente Infraestructura 6", url: "/assets/images/inicio/clientes/cliente (6).png" },
+    { name: "Cliente Vaca Muerta 7", url: "/assets/images/inicio/clientes/cliente (7).png" },
+    { name: "Cliente Servicios 8", url: "/assets/images/inicio/clientes/cliente (8).jpg" },
+    { name: "Cliente Industria 9", url: "/assets/images/inicio/clientes/cliente (9).png" },
+    { name: "Cliente Patagonia 10", url: "/assets/images/inicio/clientes/cliente (10).png" },
 ];
 
 export default function ClientLogos() {

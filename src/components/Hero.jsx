@@ -40,7 +40,7 @@ export default function Hero() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 md:mb-8 text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
                     >
-                        Movimientos de Suelo & <br />
+                        Movimientos de Suelo y <br />
                         Obras Civiles
                     </motion.h1>
 
@@ -50,7 +50,7 @@ export default function Hero() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-lg md:text-xl text-white/90 mb-8 md:mb-10 max-w-3xl leading-relaxed"
                     >
-                        Más de <span className="font-bold text-white">50 años de experiencia</span> en la Industria del Oil&Gas – Obras Públicas/Privadas y diversos servicios de Minería.
+                        Más de <span className="font-bold text-white">50 años de experiencia</span> en la Industria del Oil & Gas – Obras públicas, privadas y diversos servicios de Minería.
                     </motion.p>
 
                     <motion.div

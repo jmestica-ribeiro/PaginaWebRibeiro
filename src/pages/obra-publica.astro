@@ -3,7 +3,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 import ProjectGallery from "../components/ProjectGallery.jsx";
 ---
 
-<MainLayout title="Obra Pública | RIBEIRO SRL">
+<MainLayout
+	title="Obra Pública en Río Negro, Neuquén y La Pampa | Infraestructura Vial - RIBEIRO SRL"
+	description="Ejecución de obras públicas: infraestructura vial e hídrica, pavimentación asfáltica, defensas costeras y explotación de canteras en Río Negro, Neuquén y La Pampa."
+>
 	<!-- Cinematic Hero Section -->
 	<section
 		class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-black overflow-hidden"
@@ -105,11 +108,26 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		id="infraestructura"
 		title="Infraestructura Vial e Hídrica"
 		images={[
-			"/assets/images/obras-publicas/infraestructura_hidtica/1.png",
-			"/assets/images/obras-publicas/infraestructura_hidtica/2.png",
-			"/assets/images/obras-publicas/infraestructura_hidtica/3.png",
-			"/assets/images/obras-publicas/infraestructura_hidtica/4.png",
-			"/assets/images/obras-publicas/infraestructura_hidtica/5.png",
+			{
+				src: "/assets/images/obras-publicas/infraestructura_hidtica/1.png",
+				alt: "Obra de infraestructura vial en Río Negro",
+			},
+			{
+				src: "/assets/images/obras-publicas/infraestructura_hidtica/2.png",
+				alt: "Pavimentación y movimiento de suelos en Neuquén",
+			},
+			{
+				src: "/assets/images/obras-publicas/infraestructura_hidtica/3.png",
+				alt: "Construcción de defensas hídricas en Río Colorado",
+			},
+			{
+				src: "/assets/images/obras-publicas/infraestructura_hidtica/4.png",
+				alt: "Canalización y obras hidráulicas en La Pampa",
+			},
+			{
+				src: "/assets/images/obras-publicas/infraestructura_hidtica/5.png",
+				alt: "Infraestructura vial rutas provinciales Patagonia",
+			},
 		]}
 	/>
 
@@ -118,10 +136,22 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		id="asfalto"
 		title="Pavimentación urbana y asfalto"
 		images={[
-			"/assets/images/obras-publicas/asfalto/1.png",
-			"/assets/images/obras-publicas/asfalto/2.png",
-			"/assets/images/obras-publicas/asfalto/3.png",
-			"/assets/images/obras-publicas/asfalto/4.png",
+			{
+				src: "/assets/images/obras-publicas/asfalto/1.png",
+				alt: "Pavimentación urbana asfalto en caliente",
+			},
+			{
+				src: "/assets/images/obras-publicas/asfalto/2.png",
+				alt: "Obra de asfalto en calles municipales",
+			},
+			{
+				src: "/assets/images/obras-publicas/asfalto/3.png",
+				alt: "Maquinaria de pavimentación vial Ribeiro SRL",
+			},
+			{
+				src: "/assets/images/obras-publicas/asfalto/4.png",
+				alt: "Compactación de asfalto en obra pública",
+			},
 		]}
 	/>
 
@@ -130,9 +160,18 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		id="defensas"
 		title="Defensas costeras - Márgenes de Río"
 		images={[
-			"/assets/images/obras-publicas/margenes/1.png",
-			"/assets/images/obras-publicas/margenes/2.png",
-			"/assets/images/obras-publicas/margenes/3.png",
+			{
+				src: "/assets/images/obras-publicas/margenes/1.png",
+				alt: "Construcción de defensas costeras con gaviones",
+			},
+			{
+				src: "/assets/images/obras-publicas/margenes/2.png",
+				alt: "Protección de márgenes de río con enrocado",
+			},
+			{
+				src: "/assets/images/obras-publicas/margenes/3.png",
+				alt: "Obra hidráulica control de inundaciones",
+			},
 		]}
 	/>
 
@@ -141,10 +180,22 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		id="canteras"
 		title="Explotación de Canteras"
 		images={[
-			"/assets/images/obras-publicas/canteras/1.png",
-			"/assets/images/obras-publicas/canteras/2.png",
-			"/assets/images/obras-publicas/canteras/3.png",
-			"/assets/images/obras-publicas/canteras/4.png",
+			{
+				src: "/assets/images/obras-publicas/canteras/1.png",
+				alt: "Explotación de cantera de áridos en Río Negro",
+			},
+			{
+				src: "/assets/images/obras-publicas/canteras/2.png",
+				alt: "Procesamiento de material árido para construcción",
+			},
+			{
+				src: "/assets/images/obras-publicas/canteras/3.png",
+				alt: "Acopio de materiales en cantera propia",
+			},
+			{
+				src: "/assets/images/obras-publicas/canteras/4.png",
+				alt: "Carga de material en cantera 25 de Mayo La Pampa",
+			},
 		]}
 	/>
 </MainLayout>

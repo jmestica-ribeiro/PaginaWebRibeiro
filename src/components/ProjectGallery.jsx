@@ -66,23 +66,30 @@ export default function ProjectGallery({
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        {images.map((src, index) => (
-                            <motion.div
-                                key={index}
-                                variants={itemVariants}
-                                transition={{ duration: 0.5 }}
-                                className={`group relative rounded-2xl overflow-hidden shadow-lg cursor-pointer ${getItemWidth(images.length)} ${images.length === 1 ? 'h-[400px] md:h-[500px]' : 'h-72 md:h-80'
-                                    }`}
-                            >
-                                <motion.img
-                                    loading="lazy"
-                                    src={src}
-                                    alt={`${title || 'Proyecto'} - Imagen ${index + 1}`}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-                            </motion.div>
-                        ))}
+                        {images.map((image, index) => {
+                            const src = typeof image === 'string' ? image : image.src;
+                            const alt = typeof image === 'string'
+                                ? `${title || 'Proyecto'} - Imagen ${index + 1}`
+                                : image.alt;
+
+                            return (
+                                <motion.div
+                                    key={index}
+                                    variants={itemVariants}
+                                    transition={{ duration: 0.5 }}
+                                    className={`group relative rounded-2xl overflow-hidden shadow-lg cursor-pointer ${getItemWidth(images.length)} ${images.length === 1 ? 'h-[400px] md:h-[500px]' : 'h-72 md:h-80'
+                                        }`}
+                                >
+                                    <motion.img
+                                        loading="lazy"
+                                        src={src}
+                                        alt={alt}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                 </div>
             </section>

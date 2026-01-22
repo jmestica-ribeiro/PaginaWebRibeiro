@@ -45,14 +45,5 @@ export const OFFICES_DATA = {
             hours: "Lunes a Viernes 08:00 - 18:00",
             mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.7445052105213!2d-67.72356518714513!3d-37.74913777187512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96754b5ee2cad5eb%3A0x225ec4ceb1c155f1!2sRibeiro%20S.R.L.!5e0!3m2!1ses!2sar!4v1768773676350!5m2!1ses!2sar"
         }
-    ],
-    "rio-negro": [
-        {
-            id: "catriel",
-            name: "Base Catriel",
-            address: "Parque Industrial, Catriel",
-            hours: "Lunes a Viernes 08:00 - 18:00",
-            mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12411!2d-67.79!3d-37.88!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzdCsDUyJzQ4LjAiUyA2N8KwNDcnMjQuMCJX!5e0!3m2!1ses!2sar!4v123456789"
-        }
     ]
 };

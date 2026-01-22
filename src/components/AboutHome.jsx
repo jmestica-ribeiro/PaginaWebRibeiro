@@ -52,7 +52,7 @@ export default function AboutHome() {
                                 </h2>
                                 <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                                     <p>
-                                        Somos una empresa con <span className="text-primary-hover font-bold italic">más de 50 años de experiencia</span> que aporta valor a nuestros Clientes en la Industria del Oil&Gas con servicios de Operación & Mantenimiento, Construcciones en yacimientos petroleros; Construcciones de Infraestructuras Civiles/Viales en Obras Públicas y Privadas, como así también diversos servicios en la Industria Minera.
+                                        Con más de 50 años construyendo el futuro energético y vial de la región, en RIBEIRO integramos experiencia y flexibilidad. Nos especializamos en servicios de Operación y Mantenimiento en Oil & Gas, infraestructura civil y vial para los sectores público y privado, y soporte clave para la industria minera. Nuestro compromiso es aportar valor con soluciones de ingeniería que aseguran el éxito de cada proyecto.
                                     </p>
                                 </div>
                             </motion.div>

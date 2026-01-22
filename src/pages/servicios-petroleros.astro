@@ -3,7 +3,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 import ProjectGallery from "../components/ProjectGallery.jsx";
 ---
 
-<MainLayout title="Servicios Petroleros | RIBEIRO SRL">
+<MainLayout
+	title="Servicios Petroleros en Vaca Muerta y La Pampa | Construcción de Locaciones - RIBEIRO SRL"
+	description="Servicios especializados para la industria petrolera en Vaca Muerta, Neuquén y La Pampa (25 de Mayo). Construcción de locaciones, bodegas, movimiento de suelos y piping."
+>
 	<!-- Cinematic Hero Section -->
 	<section
 		class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-black overflow-hidden"
@@ -106,12 +109,30 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		title="Construcción de Locaciones"
 		subtitle="PCR – PLUSPETROL – TECPETROL – YPF"
 		images={[
-			"/assets/images/servicios-petroleros/construccion-locaciones/1.png",
-			"/assets/images/servicios-petroleros/construccion-locaciones/2.png",
-			"/assets/images/servicios-petroleros/construccion-locaciones/3.png",
-			"/assets/images/servicios-petroleros/construccion-locaciones/4.png",
-			"/assets/images/servicios-petroleros/construccion-locaciones/5.png",
-			"/assets/images/servicios-petroleros/construccion-locaciones/6.png",
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/1.png",
+				alt: "Construcción de locación petrolera para YPF en Vaca Muerta",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/2.png",
+				alt: "Movimiento de suelo para pozo petrolero en Neuquén",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/3.png",
+				alt: "Locación petrolera finalizada para Pluspetrol",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/4.png",
+				alt: "Maquinaria vial trabajando en yacimiento petrolífero",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/5.png",
+				alt: "Preparación de terreno y compactación en Vaca Muerta",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/construccion-locaciones/6.png",
+				alt: "Infraestructura para perforación petrolera Tecpetrol",
+			},
 		]}
 	/>
 
@@ -121,10 +142,22 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		title="Bodegas para locación"
 		subtitle="TECPETROL - PCR"
 		images={[
-			"/assets/images/servicios-petroleros/bodegas/1.png",
-			"/assets/images/servicios-petroleros/bodegas/2.png",
-			"/assets/images/servicios-petroleros/bodegas/3.png",
-			"/assets/images/servicios-petroleros/bodegas/4.png",
+			{
+				src: "/assets/images/servicios-petroleros/bodegas/1.png",
+				alt: "Construcción de bodegas de cemento para locación petrolera",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/bodegas/2.png",
+				alt: "Impermeabilización de bodegas en yacimiento Neuquén",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/bodegas/3.png",
+				alt: "Bodega de contención para fluidos petroleros",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/bodegas/4.png",
+				alt: "Infraestructura de hormigón para Tecpetrol",
+			},
 		]}
 	/>
 
@@ -134,10 +167,22 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		title="Movimiento de Suelos"
 		subtitle="TECPETROL - PCR"
 		images={[
-			"/assets/images/servicios-petroleros/mov-suelos/1.jpg",
-			"/assets/images/servicios-petroleros/mov-suelos/2.jpg",
-			"/assets/images/servicios-petroleros/mov-suelos/3.png",
-			"/assets/images/servicios-petroleros/mov-suelos/4.png",
+			{
+				src: "/assets/images/servicios-petroleros/mov-suelos/1.jpg",
+				alt: "Excavadoras realizando movimiento de suelos masivo",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/mov-suelos/2.jpg",
+				alt: "Nivelación de terreno para obra civil petrolera",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/mov-suelos/3.png",
+				alt: "Compactación de suelo calcáreo en caminos yacimiento",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/mov-suelos/4.png",
+				alt: "Flota de camiones y maquinaria pesada Ribeiro SRL",
+			},
 		]}
 	/>
 
@@ -147,11 +192,26 @@ import ProjectGallery from "../components/ProjectGallery.jsx";
 		title="Obra Civil & Piping"
 		subtitle="PCR"
 		images={[
-			"/assets/images/servicios-petroleros/piping/1.png",
-			"/assets/images/servicios-petroleros/piping/2.png",
-			"/assets/images/servicios-petroleros/piping/3.png",
-			"/assets/images/servicios-petroleros/piping/4.png",
-			"/assets/images/servicios-petroleros/piping/5.png",
+			{
+				src: "/assets/images/servicios-petroleros/piping/1.png",
+				alt: "Instalación de piping y cañerías de acero",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/piping/2.png",
+				alt: "Soldadura de ductos en planta petrolera",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/piping/3.png",
+				alt: "Montaje de válvulas y accesorios para gasoducto",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/piping/4.png",
+				alt: "Soportes de hormigón para piping industrial",
+			},
+			{
+				src: "/assets/images/servicios-petroleros/piping/5.png",
+				alt: "Terminación de obra mecánica y piping Vaca Muerta",
+			},
 		]}
 	/>
 </MainLayout>

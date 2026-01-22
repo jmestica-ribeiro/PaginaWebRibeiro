@@ -13,10 +13,10 @@ export default function Footer() {
                     </div>
                     <div className="flex gap-4">
 
-                        <Link isExternal href="#" aria-label="Instagram">
+                        <Link isExternal href="https://www.instagram.com/ribeiro.srl/" aria-label="Instagram">
                             <Instagram className="text-default-500" size={20} />
                         </Link>
-                        <Link isExternal href="#" aria-label="LinkedIn">
+                        <Link isExternal href="https://www.linkedin.com/company/ribeiro-srl" aria-label="LinkedIn">
                             <Linkedin className="text-default-500" size={20} />
                         </Link>
                     </div>
