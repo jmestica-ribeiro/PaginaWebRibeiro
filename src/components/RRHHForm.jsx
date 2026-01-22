@@ -47,7 +47,7 @@ export default function RRHHForm() {
                 puesto: formData.get("puesto"),
                 area: selectedArea,
                 mensaje: formData.get("mensaje"),
-                captcha: captchaValue,
+                recaptchaToken: captchaValue,
                 cv: null
             };
 

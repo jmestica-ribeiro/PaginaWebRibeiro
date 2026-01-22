@@ -1,9 +1,20 @@
 export const prerender = false;
 
+import { verifyRecaptcha } from '../../utils/recaptcha';
+
 export const POST = async ({ request }) => {
     const data = await request.json();
 
     try {
+        const { recaptchaToken } = data;
+        const isHuman = await verifyRecaptcha(recaptchaToken);
+
+        if (!isHuman) {
+            return new Response(JSON.stringify({
+                message: "Recaptcha verification failed"
+            }), { status: 403 });
+        }
+
         const WEBHOOK_URL = import.meta.env.POWER_AUTOMATE_WEBHOOK_URL_COMPRAS;
 
         if (!WEBHOOK_URL) {

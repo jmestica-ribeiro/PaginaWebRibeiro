@@ -1,8 +1,17 @@
 export const prerender = false;
 
+import { verifyRecaptcha } from '../../utils/recaptcha';
+
 export const POST = async ({ request }) => {
     try {
         const body = await request.json();
+
+        const { recaptchaToken } = body;
+        const isHuman = await verifyRecaptcha(recaptchaToken);
+
+        if (!isHuman) {
+            return new Response(JSON.stringify({ error: "Recaptcha verification failed" }), { status: 403 });
+        }
 
         // Accedemos a la variable de entorno NO pública (sin PUBLIC_)
         // Esto solo funciona del lado del servidor (aquí), no en el navegador.

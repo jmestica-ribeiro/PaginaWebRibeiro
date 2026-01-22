@@ -26,7 +26,8 @@ export default function ContactForm() {
         // Add additional metadata
         const payload = {
             ...data,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            recaptchaToken: captchaValue
         };
 
         try {
