@@ -15,7 +15,7 @@ const stats = [
 export default function EquipmentHome() {
     return (
         <HeroUIProvider>
-            <section id="equipment" className="pt-4 pb-20 bg-white overflow-hidden">
+            <section id="equipment" className="min-h-screen flex flex-col justify-center bg-white overflow-hidden py-12 md:pb-32">
                 <div className="container mx-auto px-6">
                     {/* Header Part */}
                     <div className="flex flex-col lg:flex-row items-center gap-16 mb-8">

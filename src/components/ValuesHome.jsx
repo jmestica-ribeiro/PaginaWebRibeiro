@@ -24,7 +24,7 @@ const values = [
 export default function ValuesHome() {
     return (
         <HeroUIProvider>
-            <section className="pt-16 pb-20 md:pt-24 md:pb-36 bg-black relative overflow-hidden">
+            <section className="min-h-screen flex flex-col justify-center bg-black relative overflow-hidden py-16 md:py-0">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                     <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />

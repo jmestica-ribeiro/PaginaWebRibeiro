@@ -8,6 +8,8 @@ export default function Hero() {
     const { scrollY } = useScroll();
     const dockOpacity = useTransform(scrollY, [0, 200], [1, 0]);
     const dockPointerEvents = useTransform(scrollY, (y) => (y > 200 ? "none" : "auto"));
+
+
     return (
         <HeroUIProvider>
             <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-surface">

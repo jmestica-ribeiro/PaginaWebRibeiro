@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/Hero.jsx";
-import ClientLogos from "../components/ClientLogos.jsx";
+
 import AboutHome from "../components/AboutHome.jsx";
 import ValuesHome from "../components/ValuesHome.jsx";
 import EquipmentHome from "../components/EquipmentHome.jsx";
@@ -14,8 +14,6 @@ import ContactBanner from "../components/ContactBanner.jsx";
     description="Líderes en movimientos de suelo, obras civiles y servicios petroleros en Vaca Muerta, Neuquén, Río Negro, La Pampa, 25 de Mayo y Santa Rosa. Soluciones integrales para la industria Oil & Gas."
 >
     <Hero client:load />
-
-    <ClientLogos client:visible />
 
     <AboutHome client:visible />
 

@@ -7,7 +7,7 @@ import { ArrowUpRight, ClipboardList, UserRoundSearch } from "lucide-react";
 export default function AccessCards() {
     return (
         <HeroUIProvider>
-            <section className="py-24 bg-primary relative overflow-hidden">
+            <section className="min-h-screen flex flex-col justify-center bg-primary relative overflow-hidden py-24 md:py-0">
                 {/* Background Pattern - Subtle dark dots */}
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
                     <div className="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:40px_40px]" />

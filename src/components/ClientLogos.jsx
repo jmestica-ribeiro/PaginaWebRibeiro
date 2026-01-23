@@ -21,7 +21,7 @@ export default function ClientLogos() {
 
     return (
         <HeroUIProvider>
-            <section className="py-8 md:py-12 bg-white overflow-hidden">
+            <section className="h-screen flex flex-col justify-center bg-white overflow-hidden snap-start">
                 <motion.div
                     initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

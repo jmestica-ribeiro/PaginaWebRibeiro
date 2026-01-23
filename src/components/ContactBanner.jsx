@@ -7,7 +7,7 @@ import { MessageSquare } from "lucide-react";
 export default function ContactBanner() {
     return (
         <HeroUIProvider>
-            <section className="relative py-24 overflow-hidden">
+            <section className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 md:py-0">
                 {/* Background Image with Overlays */}
                 <div className="absolute inset-0 z-0">
                     <img
